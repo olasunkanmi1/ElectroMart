@@ -7,10 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'rw': ['Raleway', 'sans-serif'],
+      },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'bg': "url('/assets/')",
+      },
+      colors: {
+        'primary': '#0847A8',
+        'secondary': '#70AC2A'
+      },
+      screens: {
+        'xs': '280px',
+        'ms': '320px',
+        'ls': '400px',
+        'xls': '500px',
+        'xll': '900px',
       },
     },
   },
