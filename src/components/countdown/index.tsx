@@ -22,36 +22,36 @@ function calculateRemainingTime(targetTime: number) {
 }
 
 function Countdown() {
-    const storedTargetTime = localStorage.getItem('targetTime');
-    const initialTargetTime = storedTargetTime ? Number(storedTargetTime) : null;
+    // const storedTargetTime = localStorage.getItem('targetTime');
+    // const initialTargetTime = storedTargetTime ? Number(storedTargetTime) : null;
   
-    const [targetTime, setTargetTime] = useState(initialTargetTime);
+    // const [targetTime, setTargetTime] = useState(initialTargetTime);
   
-    const calculateRemainingTimeCallback = useCallback(() => {
-      return calculateRemainingTime(targetTime || 0);
-    }, [targetTime]);
+    // const calculateRemainingTimeCallback = useCallback(() => {
+    //   return calculateRemainingTime(targetTime || 0);
+    // }, [targetTime]);
   
-    const [count, setCount] = useState(calculateRemainingTimeCallback());
-    const { days, hours, minutes, seconds } = count;
+    // const [count, setCount] = useState(calculateRemainingTimeCallback());
+    // const { days, hours, minutes, seconds } = count;
 
-    useEffect(() => {
-        if (!targetTime) {
-          // Target time is not available, set a new target time
-          const newTargetDate = new Date();
-          newTargetDate.setDate(newTargetDate.getDate() + 30); // Add 30 days to the current date
-          const newTargetTime = newTargetDate.getTime(); // Get the timestamp of the new target date
-          setTargetTime(newTargetTime);
-          localStorage.setItem('targetTime', newTargetTime.toString());
-        }
+    // useEffect(() => {
+    //     if (!targetTime) {
+    //       // Target time is not available, set a new target time
+    //       const newTargetDate = new Date();
+    //       newTargetDate.setDate(newTargetDate.getDate() + 30); // Add 30 days to the current date
+    //       const newTargetTime = newTargetDate.getTime(); // Get the timestamp of the new target date
+    //       setTargetTime(newTargetTime);
+    //       localStorage.setItem('targetTime', newTargetTime.toString());
+    //     }
     
-        const timer = setInterval(() => {
-          setCount(calculateRemainingTime(targetTime || 0));
-        }, 1000);
+    //     const timer = setInterval(() => {
+    //       setCount(calculateRemainingTime(targetTime || 0));
+    //     }, 1000);
     
-        return () => {
-          clearInterval(timer);
-        };
-    }, [targetTime]);
+    //     return () => {
+    //       clearInterval(timer);
+    //     };
+    // }, [targetTime]);
   
 
     //   when the countdown reaches zero
@@ -65,7 +65,8 @@ function Countdown() {
     <div className='wrapper'>
       <div className='flex flex-col xls:flex-row justify-between items-center p-2 bg-secondary/80 text-white rounded-md relative'>
         <h2 className='flex items-center gap-2 font-medium'> <AiFillTag size={25} /> Flash Sales</h2>
-        <h2 className='sm:absolute left-[50%] sm:translate-x-[-50%] text-sm ms:text-base font-semibold'>Time Left: {days}d : {hours}h : {minutes}m : {seconds}s</h2>
+        {/* <h2 className='sm:absolute left-[50%] sm:translate-x-[-50%] text-sm ms:text-base font-semibold'>Time Left: {days}d : {hours}h : {minutes}m : {seconds}s</h2> */}
+        <h2 className='sm:absolute left-[50%] sm:translate-x-[-50%] text-sm ms:text-base font-semibold'>Time Left: 30d : 23h : 59m : 59s</h2>
       </div>
     </div>
   );
