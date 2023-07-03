@@ -1,7 +1,19 @@
-import Image from 'next/image'
+import { Hero, Countdown, PhonesAndTablets, Gaming, Smartwatches, Televisions, Audios, Computing, Photography, Drones, HomeAppliances } from '@components'
 
 export default function Home() {
   return (
-    <h1 className='text-2xl'> Hello World </h1>
+    <>
+      <Hero />
+      <Countdown />
+      <PhonesAndTablets />
+      <Gaming />
+      <Televisions />
+      <Smartwatches />
+      <HomeAppliances />
+      <Audios />
+      <Computing />
+      <Photography />
+      <Drones />
+    </>
   )
 }

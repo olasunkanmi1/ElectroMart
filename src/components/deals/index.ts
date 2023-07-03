@@ -1,0 +1,9 @@
+export { default as PhonesAndTablets } from './phones-and-tablets';
+export { default as Gaming } from './gaming';
+export { default as Smartwatches } from './smartwatches';
+export { default as Televisions } from './televisions';
+export { default as Drones } from './drones';
+export { default as Audios } from './audios';
+export { default as HomeAppliances } from './home-appliances';
+export { default as Photography } from './photography';
+export { default as Computing } from './computing';
