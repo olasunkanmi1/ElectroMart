@@ -48,7 +48,7 @@ export default function DealsLayout({ heading, category, topDeals }: DealsLayout
                 navigation={true}
                 pagination={{clickable: true}}
                 modules={[Navigation, Pagination]}
-                className="h-[390px] w-full !p-3 deals"
+                className="h-[400px] w-full !p-3 deals"
             >
                 {
                     [...Array(6)].map((_, i) => {

@@ -24,7 +24,7 @@ export default function Categories() {
                 <div className='fcc bg-primary/80 h-[50px] w-full lg:h-9 lg:w-9'>
                     <Image src={icon} alt={title} width={25} height={25} />
                 </div>
-                <span className='lg:fcc p-2 lg:p-0 w-full lg:w-auto h-[50px] lg:h-auto text-center lg:text-left'> {title} </span>
+                <span className='fcc p-2 lg:p-0 w-full lg:w-auto h-[50px] lg:h-auto text-center lg:text-left'> {title} </span>
             </Link>
         )) }
         
