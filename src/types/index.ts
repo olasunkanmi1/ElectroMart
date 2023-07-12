@@ -37,5 +37,6 @@ export interface Product {
         discount: number;
         QuantityInStock: string;
         price: number;
+        id: String;
     }
 };

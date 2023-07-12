@@ -62,12 +62,11 @@ a {
 }
 
 .deals .swiper-button-next::after {
-  transform: translateY(170px);
-  z-index: 10;
+  transform: translateY(150px);
 }
 
 .deals .swiper-button-prev::after {
-  transform: translateY(170px);
+  transform: translateY(150px);
 }
 
 .swiper-pagination {
