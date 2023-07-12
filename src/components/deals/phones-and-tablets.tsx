@@ -6,7 +6,7 @@ export default function PhonesAndTablets() {
   return (
     <DealsLayout 
       heading='Top Phones and Tablets Deals'
-      category='phones-and-tablets'
+      category='phonesAndTabs'
       // topDeals={topDeals}
     />
   )

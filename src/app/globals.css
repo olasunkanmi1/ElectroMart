@@ -90,3 +90,11 @@ a {
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background: rgb(8, 71, 168, .8) !important;
 }
+
+.swiper-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  max-height: 100vh !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+}

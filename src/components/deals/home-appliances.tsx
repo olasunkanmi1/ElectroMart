@@ -6,7 +6,7 @@ export default function HomeAppliances() {
   return (
     <DealsLayout 
       heading='Home Appliances Deals'
-      category='home-appliances'
+      category='homeAppliances'
       // topDeals={topDeals}
     />
   )

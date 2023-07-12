@@ -27,5 +27,15 @@ export interface product {
 export interface DealsLayoutProps {
     heading: string;
     category: string;
-    topDeals?: product;
+};
+
+export interface Product {
+    product: {
+        images: string[];
+        name: string;
+        description: string;
+        discount: number;
+        QuantityInStock: string;
+        price: number;
+    }
 };

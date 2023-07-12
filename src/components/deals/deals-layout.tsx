@@ -1,23 +1,34 @@
 "use client"
 
-import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { AiOutlineRight } from 'react-icons/ai';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { logo } from '@public'
-import { DealsLayoutProps } from '@types'
+import { DealsLayoutProps, Product as ProductType } from '@types'
+import { axiosInstance } from '@utils'
 import Product from '../product'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-export default function DealsLayout({ heading, category, topDeals }: DealsLayoutProps) {
-    // const { 
-    //     imageUrl, name, description, 
-    //     discountPercentage, originalPrice, 
-    //     salePrice, productPageUrl 
-    // } = topDeals;
+export default function DealsLayout({ heading, category }: DealsLayoutProps) {
+    const [featuredProducts, setFeaturedProducts] = useState<ProductType['product'][]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axiosInstance.get(`/product?category=${category}`)
+        .then(({status, data}) => {
+            if(status === 200) {
+                setFeaturedProducts(data.products);
+                setLoading(false);
+            }
+        }).catch((error) => {
+            console.log('error', error)
+        })
+        
+    }, [category])
+    
 
   return (
     <div className='wrapper'>
@@ -32,7 +43,7 @@ export default function DealsLayout({ heading, category, topDeals }: DealsLayout
             </div>
 
             <Swiper
-                slidesPerView={1}
+                // slidesPerView={1}
                 spaceBetween={10}
                 breakpoints={{
                     380: {
@@ -50,15 +61,17 @@ export default function DealsLayout({ heading, category, topDeals }: DealsLayout
                 modules={[Navigation, Pagination]}
                 className="h-[400px] w-full !p-3 deals"
             >
-                {
-                    [...Array(6)].map((_, i) => {
-                        return (
+                {loading ? (
+                    <h1>Loading</h1>
+                ) : (
+                    <Swiper>
+                        { featuredProducts.slice(0, 5).map((product, i) => (
                             <SwiperSlide key={i} className='h-full'>
-                                <Product />
+                                <Product product={product} />
                             </SwiperSlide>
-                        )
-                    })
-                }
+                        ))}
+                    </Swiper>
+                )}
             </Swiper>     
         </div>
     </div>

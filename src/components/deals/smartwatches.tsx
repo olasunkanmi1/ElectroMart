@@ -6,7 +6,7 @@ export default function SmartWatches() {
   return (
     <DealsLayout 
       heading='Top Smartwatches Deals'
-      category='snartwatches'
+      category='smartwatches'
       // topDeals={topDeals}
     />
   )
