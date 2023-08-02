@@ -7,8 +7,8 @@ import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { DealsLayoutProps, Product as ProductType } from '@types';
 import { axiosInstance } from '@utils';
-import Product from '../product';
-import Skeleton from '../product/skeleton';
+import Product from '../../product';
+import Skeleton from '../../product/skeleton';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -47,7 +47,7 @@ export default function DealsLayout({ heading, category }: DealsLayoutProps) {
         <div className="flex items-center justify-between bg-primary/80 text-white p-2">
           <h2 className="font-semibold w-[calc(100%-100px)]"> {heading} </h2>
 
-          <Link href={`/categories/${category}`} className="fcc gap-1">
+          <Link href={`/products?category=${category}`} className="fcc gap-1">
             SEE ALL
             <AiOutlineRight />
           </Link>
@@ -72,19 +72,17 @@ export default function DealsLayout({ heading, category }: DealsLayoutProps) {
           modules={[Navigation, Pagination]}
           className="h-[360px] w-full !p-3 deals"
         >
-          {loading ? (
-            [...Array(5)].map((_, i) => (
-              <SwiperSlide className="max-w-full" key={i}>
-                <Skeleton />
-              </SwiperSlide>
-            ))
-          ) : (
-            shuffleArray(featuredProducts).map((product, i) => (
-              <SwiperSlide key={i} className="">
-                <Product product={product} />
-              </SwiperSlide>
-            ))
-          )}
+          {loading
+            ? [...Array(5)].map((_, i) => (
+                <SwiperSlide className="max-w-full" key={i}>
+                  <Skeleton />
+                </SwiperSlide>
+              ))
+            : shuffleArray(featuredProducts).map((product, i) => (
+                <SwiperSlide key={i} className="">
+                  <Product product={product} />
+                </SwiperSlide>
+              ))}
         </Swiper>
       </div>
     </div>

@@ -10,5 +10,10 @@ import phoneTab from './phoneTab.svg'
 import cam from './cam.svg'
 import audio from './audio.svg'
 import home from './home.svg'
+// export { default as OneStar } from './one-star.svg'
+// export { default as TwoStar } from './two-star.svg'
+// export { default as ThreeStar } from './three-star.svg'
+// export { default as FourStar } from './four-star.svg'
+// export { default as FiveStar } from './five-star.svg'
 
 export {logo, drone, hero, computer, watch, game, tv, phoneTab, cam, audio, home}

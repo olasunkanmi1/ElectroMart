@@ -101,6 +101,9 @@ const nextConfig = {
     domains: ['res.cloudinary.com'],
   },
   rewrites: rewrites,
+  experimental: {
+    serverActions: true,
+  },
 };
 
 module.exports = nextConfig;

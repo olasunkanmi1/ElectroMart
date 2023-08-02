@@ -1,7 +1,7 @@
 
 const Skeleton = () => {
   return (
-    <div className='h-[300px] shadow-custom animate-pulse'>
+    <div className='h-[300px] rounded-md shadow-custom animate-pulse'>
         <div className='bg-slate-200 h-[200px]' />
 
         <div className='p-2 flex flex-col justify-between h-[100px]'>

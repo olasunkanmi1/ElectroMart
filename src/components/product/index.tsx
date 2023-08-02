@@ -21,8 +21,6 @@ const Product = ({product}: Product) => {
         overflow: 'hidden',
     } 
 
-
-
   return (
     <Link href={`/product/${id}`}>
         <div className='shadow-custom rounded-md overflow-hidden  transition ease-in-out duration-500 hover:scale-[1.01] relative'>

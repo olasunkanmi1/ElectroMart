@@ -20,6 +20,18 @@
   .hamburgerSpan {
     @apply absolute h-[4px] text-primary rounded transition duration-300 bg-primary
   }
+
+  .dropdownWrapper {
+    @apply space-y-2 absolute rounded p-2 bg-white z-20 shadow-[rgba(0,0,0,0.24)_0px_3px_8px]
+  }
+
+  .tooltip {
+    @apply absolute right-5 bottom-0 w-0 h-0 border-x-[8px] border-x-transparent border-b-[8px] border-b-white
+  }
+
+  .tabSortActive {
+    @apply bg-primary/20 border border-primary text-primary
+  }
 }
 
 @layer utilities {
@@ -61,12 +73,8 @@ a {
   font-weight: 900 !important;
 }
 
-.deals .swiper-button-next::after {
-  transform: translateY(150px);
-}
-
-.deals .swiper-button-prev::after {
-  transform: translateY(150px);
+.deals .swiper-button-next::after, .deals .swiper-button-prev::after {
+  transform: translateY(155px);
 }
 
 .swiper-pagination {

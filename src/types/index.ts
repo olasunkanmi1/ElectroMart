@@ -1,9 +1,21 @@
 
 export interface LayoutState {
     navbarDropdown: string;
+    filterDropdown: string;
+    sidebar: boolean;
+    isList: boolean;
+    productLoading: boolean;
 };
 
-export interface DropdownLayoutProps {
+export interface FilterState {
+    category: string;
+    brand: string;
+    rating: string;
+    sort: string;
+    discount: string;
+};
+
+export interface NavbarDropdownLayoutProps {
     options: {
         name: string;
         links: {
@@ -14,15 +26,15 @@ export interface DropdownLayoutProps {
     }
 };
 
-export interface product {
-    imageUrl: string[];
-    name: string;
-    description: string;
-    discountPercentage: number;
-    originalPrice: number;
-    salePrice: number;
-    productPageUrl: string;
-};
+// export interface Product {
+//     imageUrl: string[];
+//     name: string;
+//     description: string;
+//     discountPercentage: number;
+//     originalPrice: number;
+//     salePrice: number;
+//     productPageUrl: string;
+// };
 
 export interface DealsLayoutProps {
     heading: string;
@@ -40,3 +52,69 @@ export interface Product {
         id: String;
     }
 };
+
+export interface IFilterValues {
+    [key: string]: string | []
+};
+
+export interface FilterOption {
+    items: {
+        name: string;
+        value: string;
+    }[];
+    placeholder: string;
+    queryName: string;
+};
+
+export interface ISelections {
+    categories: FilterOption;
+    ratings: FilterOption;
+    brands: {
+        items: {
+            name: string;
+            value: string;
+            relatedCategory: string[];
+        }[];
+        placeholder: string;
+        queryName: string;
+    };
+    sortBy: FilterOption;
+    discounts: FilterOption;
+};
+
+
+export interface SortLayoutProps {
+    options: {
+        name: string;
+        selection: {
+            placeholder: string;
+            queryName: string;
+            items: FilterOption['items'];
+        };
+        selectedValue: string;
+    }
+};
+
+export interface FilterDropdownProps {
+    name: string;
+    items: FilterOption['items'];
+    queryName: string;
+};
+
+export interface ServerSideProps {
+    params: {
+        category: string;
+    };
+    searchParams: {
+        [key: string]: string | string[]
+    };
+}
+
+// export interface ProductsProps {
+//     category: string;
+//     products: Product['product'][];
+// }
+
+export interface ProductsState {
+    products: Product['product'][];
+}

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { layoutReducer } from './slices'
+import { layoutReducer, filterReducer, productsReducer } from './slices'
 
 export const store = configureStore({
   reducer: {
-    layout: layoutReducer
+    layout: layoutReducer,
+    filter: filterReducer,
+    products: productsReducer,
   },
   devTools: process.env.NODE_ENV !== 'production'
 });

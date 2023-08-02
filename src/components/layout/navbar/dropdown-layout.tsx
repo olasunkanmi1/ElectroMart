@@ -1,14 +1,14 @@
 import Link from 'next/link'
-import { DropdownLayoutProps } from "@types";
+import { NavbarDropdownLayoutProps } from "@types";
 import { useAppDispatch, useAppSelector, handleNavbarDropdown } from '@redux';
 import {AiOutlineDown} from 'react-icons/ai'
 
-const DropdownLayout: React.FC<DropdownLayoutProps> = ({ options: { name, links, icon } }) => {
+const DropdownLayout: React.FC<NavbarDropdownLayoutProps> = ({ options: { name, links, icon } }) => {
     const { navbarDropdown } = useAppSelector((state) => state.layout);
     const dispatch = useAppDispatch();
 
   return (
-    <div className='relative'>
+    <div className='relative hidden sm:flex'>
         <button 
         className={`
           fcc gap-1 outline-none transition ease-in-out duration-300 hover:text-primary hover:font-semibold 

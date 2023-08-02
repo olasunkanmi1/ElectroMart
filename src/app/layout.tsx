@@ -1,4 +1,6 @@
 import './globals.css'
+import nProgress from "nprogress";
+import 'nprogress/nprogress.css';
 import { Navbar, Footer } from '@components'
 import { ReduxProvider } from '../redux/provider'
 
@@ -12,6 +14,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  nProgress.configure({ showSpinner: false });
+  
   return (
     <html lang="en">
           <body>

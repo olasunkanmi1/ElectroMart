@@ -3,7 +3,7 @@ const Hamburger = () => {
   const isSidebarOpen = false;
 
   return (
-    <div className="md:hidden flex items-center relative w-[40px] h-[32px] cursor-pointer"
+    <div className="sm:hidden flex items-center relative w-[40px] h-[32px] cursor-pointer"
         onClick={() => {}}
     >
       <span className={`hamburgerSpan top-0 left-0 w-1/2 ${isSidebarOpen && 'origin-top-left translate-x-[calc(40px*.17)] rotate-45'}`} />
