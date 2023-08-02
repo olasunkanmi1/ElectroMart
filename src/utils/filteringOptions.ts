@@ -1,8 +1,8 @@
-import { IFilterValues, ISelections, FilterOption } from "@types";
+import { IFilterValues, IFilterOptions } from "@types";
 
-const filterOptions = [
+export const filterOptions: IFilterOptions = {
   // Category
-  {
+  categories: {
     items: [
       { name: 'Smartwatches', value: 'smartwatches' },
       { name: 'Computing', value: 'computing' },
@@ -18,7 +18,7 @@ const filterOptions = [
     queryName: 'category',
   },
   // Rating
-  {
+  ratings: {
     items: [
       { name: '4', value: '4' },
       { name: '3', value: '3' },
@@ -29,7 +29,7 @@ const filterOptions = [
     queryName: 'rating',
   },
   // Brand
-  {
+  brands: {
     items: [
       { name: 'Apple', value: 'apple', relatedCategory: ['smartwatches', 'computing', 'phonesAndTabs', 'audio'] },
       { name: 'Fitbit', value: 'fitbit', relatedCategory: ['smartwatches'] },
@@ -55,7 +55,7 @@ const filterOptions = [
     queryName: 'brand',
   },
   // Sort
-  {
+  sortBy: {
     items: [
       { name: 'Lowest Price', value: 'price-asc' },
       { name: 'Highest Price', value: 'price-desc' },
@@ -65,7 +65,7 @@ const filterOptions = [
     queryName: 'sort',
   },
   // Discount
-  {
+  discounts: {
     items: [
       { name: '40% or more', value: '40' },
       { name: '30% or more', value: '30' },
@@ -77,7 +77,7 @@ const filterOptions = [
     queryName: 'discount',
   },
   
-]; 
+}; 
   
 export const getFilterValues = (filterValues: IFilterValues) => {
   const {
@@ -113,12 +113,3 @@ export const getFilterValues = (filterValues: IFilterValues) => {
 
   return values;
 };
-
-const findObjectByQueryName  = (queryName: string) => filterOptions.find((filter) => filter.queryName === queryName)!
-export const selections: ISelections = {
-  categories: findObjectByQueryName ('category'),
-  ratings: findObjectByQueryName ('rating'),
-  brands: findObjectByQueryName ('brand'),
-  sortBy: findObjectByQueryName('sort'),
-  discounts: findObjectByQueryName('discount'),
-}

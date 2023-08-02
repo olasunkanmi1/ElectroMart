@@ -1,6 +1,6 @@
 import { AiOutlineUp } from 'react-icons/ai';
 import { useAppDispatch, useAppSelector, handleFilterDropdown, handleFilterChange } from '@redux';
-import { selections } from '@utils'
+import { filterOptions } from '@utils'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { findProducts } from '@utils';
 
@@ -11,7 +11,7 @@ const Sort = () => {
     const dispatch = useAppDispatch();
     const { filterDropdown } = useAppSelector((state) => state.layout);
     const { sort } = useAppSelector((state) => state.filter);
-    const { sortBy } = selections;
+    const { sortBy } = filterOptions;
 
     const { items, placeholder, queryName } = sortBy;
     const sortValue = sort === 'any' ? 'Popular'
@@ -25,7 +25,7 @@ const Sort = () => {
     };
 
     return (
-        <div className='relative'>
+        <div className='relative flex justify-end mr-2'>
             <div className='flex items-center cursor-pointer' onClick={() => dispatch(handleFilterDropdown('sort'))}>
                 <p className=''> 
                     <span className='font-medium'> {placeholder}:  </span>

@@ -1,4 +1,3 @@
-import Sort from './sort';
 import LayoutSwitch from './layout-switch';
 import { useAppSelector } from '@redux';
 
@@ -14,18 +13,15 @@ const Top = () => {
 
     return (
       <div className=''>
-        <div className='flex justify-between items-center border-b border-primary/10 p-2'>
+        <div className='flex items-center border-b border-primary/10 p-2'>
           { productLoading ? (
-            <>
-              <div className='animate-pulse w-[250px] bg-slate-200 h-7' />
-              <div className='animate-pulse w-[180px] bg-slate-200 h-4' />
-            </>
+            <div className='animate-pulse w-[250px] bg-slate-200 h-7' />
           ) : (
             <>
               <h1 className='font-semibold text-xl text-primary'> 
                 {selectedValue} {brand && `> ${brand.charAt(0).toUpperCase() + brand.slice(1)}`}  
               </h1>
-              <Sort />
+              
             </>
           )}
         </div>
@@ -33,7 +29,7 @@ const Top = () => {
         <div className='flex justify-between items-center border-b border-primary/10 p-2'>
           { productLoading ? (
             <>
-              <div className='animate-pulse w-[100px] bg-slate-200 h-5' />
+              <div className='animate-pulse w-[180px] bg-slate-200 h-5' />
               <div className='animate-pulse w-20 bg-slate-200 h-11 rounded-md' />
             </>
           ) : (

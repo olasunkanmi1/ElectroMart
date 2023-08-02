@@ -66,7 +66,7 @@ export interface FilterOption {
     queryName: string;
 };
 
-export interface ISelections {
+export interface IFilterOptions {
     categories: FilterOption;
     ratings: FilterOption;
     brands: {

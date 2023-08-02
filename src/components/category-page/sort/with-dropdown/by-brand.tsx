@@ -1,10 +1,10 @@
 import Layout from './layout';
 import { useAppSelector } from '@redux';
-import { selections } from '@utils'
+import { filterOptions } from '@utils'
 
 const Brand = () => {
   const { category, brand } = useAppSelector((state) => state.filter);
-  const { brands, categories } = selections;
+  const { brands, categories } = filterOptions;
   const selectedValue = brand === 'dji' ? 'DJI' :
     brand === 'jbl' ? 'JBL' : brand;
 

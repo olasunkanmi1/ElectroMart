@@ -1,10 +1,10 @@
 import Layout from './layout';
 import { useAppSelector } from '@redux';
-import { selections } from '@utils'
+import { filterOptions } from '@utils'
 
 const Discount = () => {
     const { discount } = useAppSelector((state) => state.filter);
-    const { discounts } = selections;
+    const { discounts } = filterOptions;
 
     const options = {
         name: 'discount',

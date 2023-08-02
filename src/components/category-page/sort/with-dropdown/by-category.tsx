@@ -2,11 +2,11 @@
 
 import Layout from './layout';
 import { useAppSelector } from '@redux';
-import { selections } from '@utils'
+import { filterOptions } from '@utils'
 
 const Category = () => {
   const { category } = useAppSelector((state) => state.filter);
-  const { categories } = selections;
+  const { categories } = filterOptions;
   const selectedValue =  category === 'phonesAndTabs' ? 'Phones and Tablets'
       : category === 'homeAppliances'  ? 'Home Appliances' : category;
 
