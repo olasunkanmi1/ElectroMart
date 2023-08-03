@@ -8,7 +8,9 @@ export const { reducer: layoutReducer,
         handleNavbarDropdown, 
         handleFilterDropdown, 
         handleProductLayout,
-        handleProductLoading
+        handleProductLoading,
+        handlePageLoading,
+        handleSidebar
     } 
 } = createSlice({
     name: 'layout',
@@ -18,6 +20,7 @@ export const { reducer: layoutReducer,
         sidebar: false,
         isList: false,
         productLoading: false,
+        pageLoading: true,
     } as LayoutState,
     reducers: {
         handleNavbarDropdown: (state, {payload}: PayloadAction<string>) => {
@@ -28,6 +31,12 @@ export const { reducer: layoutReducer,
         },
         handleProductLayout: (state, {payload}: PayloadAction<boolean>) => {
             state.isList = payload;
+        },
+        handleSidebar: (state, {payload}: PayloadAction<boolean>) => {
+            state.sidebar = payload;
+        },
+        handlePageLoading: (state, {payload}: PayloadAction<boolean>) => {
+            state.pageLoading = payload;
         },
         handleProductLoading: (state, {payload}: PayloadAction<boolean>) => {
             state.productLoading = payload;

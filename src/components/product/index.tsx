@@ -1,11 +1,11 @@
 import { CSSProperties } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { AiOutlineRight } from 'react-icons/ai';
+import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai';
 import { logo } from '@public'
 import { Product } from '@types'
 
-const Product = ({product}: Product) => {
+const Product = ({product, homepage}: Product) => {
     const { 
         images, name, description, 
         discount, QuantityInStock,
@@ -23,8 +23,12 @@ const Product = ({product}: Product) => {
 
   return (
     <Link href={`/product/${id}`}>
-        <div className='shadow-custom rounded-md overflow-hidden  transition ease-in-out duration-500 hover:scale-[1.01] relative'>
-            <span className='absolute right-1 top-1 bg-secondary text-white rounded text-xs z-[3] p-[3px]'> -{discount}% </span>
+        <div className='shadow-custom rounded-md  transition ease-in-out duration-500 hover:scale-[1.01] relative'>
+            <div className="ribbon">
+                <span> 
+                    {discount}% OFF 
+                </span>
+            </div>
             <div className='relative h-[200px] z-[2]'>
                 <Image
                     src={images[0]} alt="photo" fill loading='lazy' placeholder='blur'
@@ -35,13 +39,20 @@ const Product = ({product}: Product) => {
 
             <div className='p-2 space-y-1'>
                 <h4 className='font-medium text-ellipsis leading-[19px]' style={styles}> { name } </h4> 
-                {/* <p className='text-sm whitespace-nowrap overflow-hidden overflow-ellipsis'> { description } </p>  */}
                 <div className='flex justify-between items-center'>
-                    <h4 className='font-semibold text-primary'> ${ newPrice } </h4> 
-                    <h4 className='text-sm line-through text-gray-700'> ${ price } </h4> 
+                    <h4 className='font-semibold text-primary text-sm ls:text-base'> ${ newPrice } </h4> 
+                    <h4 className='text-xs ls:text-sm line-through text-gray-700'> ${ price } </h4> 
                 </div>
-                <p className='text-xs'> {QuantityInStock} items left </p>
-                {/* <div className='h-2 bg-gray-300 rounded-full overflow-hidden relative before:absolute before:content-[""] before:h-full before:w-[50%] before:bg-primary/80 before:left-0' /> */}
+                { homepage ? (
+                    <p className='text-xs'> {QuantityInStock} items left </p>
+                ) : (
+                    <div className='flex justify-between items-center space-x-2'>
+                        <button className='flex justify-center items-center py-1 text-xs ls:text-sm bg-primary/80 text-white font-semibold rounded w-full'> 
+                            <AiOutlineShoppingCart size={20} className='hidden ls:block mr-2' /> ADD TO CART 
+                        </button>
+                        {/* <button className='text-primary'> <AiOutlineHeart size={20} /> </button> */}
+                    </div>
+                ) }
             </div>
         </div>
     </Link>

@@ -9,14 +9,14 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
     const {name, selection, selectedValue} = options;
     const { items, placeholder, queryName } = selection;
 
-    const { filterDropdown, productLoading } = useAppSelector((state) => state.layout);
+    const { filterDropdown, pageLoading } = useAppSelector((state) => state.layout);
     const dispatch = useAppDispatch();
 
   return (  
     <div className='relative flex flex-col p-2 border-b border-white gap-1 text-sm'>
         <h4 className='font-medium'> {placeholder} </h4>
 
-        { productLoading ? (
+        { pageLoading ? (
             <>
               <div className='animate-pulse w-full bg-gray-400 h-9 rounded-md' />
             </>

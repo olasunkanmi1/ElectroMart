@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import { Sort, Products } from '@components'
 import { axiosInstance } from '@utils';
 import { ServerSideProps } from '@types';
-import { useAppDispatch, useAppSelector, handleProducts, handleFilterChange, handleProductLoading } from '@redux';
+import { useAppDispatch, useAppSelector, handleProducts, handleFilterChange, handleProductLoading, handlePageLoading } from '@redux';
 
 export default function ProductsPage({params, searchParams}: ServerSideProps) {
   const dispatch = useAppDispatch();
@@ -36,6 +36,7 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
         .then(({products}) => {
           dispatch(handleProducts(products));
           dispatch(handleProductLoading(false));
+          dispatch(handlePageLoading(false));
         })
         .catch(error => console.error('Error:', error));
 

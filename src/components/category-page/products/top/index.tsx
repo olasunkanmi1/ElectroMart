@@ -4,7 +4,7 @@ import { useAppSelector } from '@redux';
 const Top = () => {
   const {category, brand} = useAppSelector((state) => state.filter);
   const {products} = useAppSelector((state) => state.products);
-  const {productLoading} = useAppSelector((state) => state.layout);
+  const {productLoading, pageLoading} = useAppSelector((state) => state.layout);
   const total = products.length;
 
   const selectedValue = !category ? 'All Products' : category === 'phonesAndTabs' ? 'Phones and Tablets'
@@ -14,7 +14,7 @@ const Top = () => {
     return (
       <div className=''>
         <div className='flex items-center border-b border-primary/10 p-2'>
-          { productLoading ? (
+          { pageLoading ? (
             <div className='animate-pulse w-[250px] bg-slate-200 h-7' />
           ) : (
             <>
@@ -28,15 +28,15 @@ const Top = () => {
         
         <div className='flex justify-between items-center border-b border-primary/10 p-2'>
           { productLoading ? (
-            <>
-              <div className='animate-pulse w-[180px] bg-slate-200 h-5' />
-              <div className='animate-pulse w-20 bg-slate-200 h-11 rounded-md' />
-            </>
+            <div className='animate-pulse w-[180px] bg-slate-200 h-5' />
           ) : (
-            <>
-              <h1 className=''> { total < 1 ? 'No product found' : `${total} product${total > 1 ? 's' : ''} found` } </h1>
-              <LayoutSwitch />
-            </>
+            <h1 className=''> { total < 1 ? 'No product found' : `${total} product${total > 1 ? 's' : ''} found` } </h1>
+          )}
+          
+          { pageLoading ? (
+            <div className='animate-pulse w-20 bg-slate-200 h-11 rounded-md' />
+          ) : (
+            <LayoutSwitch />
           )}
         </div>
       </div>

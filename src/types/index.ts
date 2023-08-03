@@ -5,6 +5,7 @@ export interface LayoutState {
     sidebar: boolean;
     isList: boolean;
     productLoading: boolean;
+    pageLoading: boolean;
 };
 
 export interface FilterState {
@@ -50,7 +51,8 @@ export interface Product {
         QuantityInStock: string;
         price: number;
         id: String;
-    }
+    },
+    homepage?: boolean;
 };
 
 export interface IFilterValues {

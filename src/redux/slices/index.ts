@@ -3,7 +3,9 @@ export {
   handleNavbarDropdown,
   handleFilterDropdown,
   handleProductLayout,
-  handleProductLoading
+  handleProductLoading,
+  handlePageLoading,
+  handleSidebar
 } from './layout';
 export { filterReducer, handleFilterChange } from './filter';
 export { productsReducer, handleProducts } from './products';

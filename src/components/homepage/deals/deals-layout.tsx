@@ -75,12 +75,12 @@ export default function DealsLayout({ heading, category }: DealsLayoutProps) {
           {loading
             ? [...Array(5)].map((_, i) => (
                 <SwiperSlide className="max-w-full" key={i}>
-                  <Skeleton />
+                  <Skeleton homepage />
                 </SwiperSlide>
               ))
             : shuffleArray(featuredProducts).map((product, i) => (
                 <SwiperSlide key={i} className="">
-                  <Product product={product} />
+                  <Product product={product} homepage />
                 </SwiperSlide>
               ))}
         </Swiper>

@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className="bg-primary/80">
       <div className="xl:max-w-[1220px] m-auto px-3 sm:px-8 xl:px-0 flex flex-col py-4 text-white space-y-6 overflow-hidden">
         <div className="space-y-5 md:space-y-0 md:flex justify-between items-center">
-          <div className="flex flex-wrap items-center gap-[15px] ls:gap-0 ls:space-x-6 justify-between xls:justify-start">
+          <div className="flex flex-wrap items-center gap-[15px] ls:gap-0 ls:gap-x-6 justify-between xls:justify-start">
             {linkArr.map((link, i) => {
               return (
                 <div key={i} className='footer_links'> {link} </div>

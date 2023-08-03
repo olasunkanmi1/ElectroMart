@@ -12,7 +12,7 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const dispatch = useAppDispatch();
-    const { productLoading } = useAppSelector((state) => state.layout);
+    const { pageLoading } = useAppSelector((state) => state.layout);
 
 
     const handleSelect = (value: string) => {
@@ -29,11 +29,11 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
             <button className='font-medium text-primary'> RESET </button>
         </div>
 
-        { productLoading ? (
+        { pageLoading ? (
             [...Array(items.length)].map((_, i) => (
                 <div className='flex gap-2' key={i}>
                     <div className='animate-pulse w-5 h-5 rounded-full bg-gray-400' />
-                    <div className='animate-pulse bg-gray-400 h-4 w-[calc(100%-30px)]' />
+                    <div className='animate-pulse bg-gray-400 h-4 w-[calc(100%-50px)]' />
                 </div>
             ))
         ) : (
