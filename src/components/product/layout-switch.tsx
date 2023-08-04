@@ -12,15 +12,11 @@ const LayoutSwitch = () => {
         {value: false, icon: <FiGrid size={20} />},
     ]
 
-    const handleSwitch = (value: boolean) => {
-        dispatch(handleProductLayout(value))
-    }
-
   return (
-    <div className='flex w-fit border border-primary rounded-md p-1 cursor-pointer'>
+    <div className='hidden ls:flex w-fit border border-primary rounded-md p-1 cursor-pointer'>
         {typeArr.map(({value, icon}, i) => (
             <span key={i} className={`flex justify-center items-center p-1 ms:p-2 rounded ${isList === value ? 'bg-primary/80 text-white' : ''}`}
-               onClick={() => handleSwitch(value)}            
+               onClick={() => dispatch(handleProductLayout(value))}            
             > 
                {icon} 
             </span>

@@ -56,6 +56,11 @@ export interface Product {
     homepage?: boolean;
 };
 
+export interface ProductTypeProps {
+    options: Product;
+    homepage?: boolean;
+};
+
 export interface IFilterValues {
     [key: string]: string | []
 };

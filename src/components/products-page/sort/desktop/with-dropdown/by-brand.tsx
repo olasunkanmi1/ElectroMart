@@ -10,7 +10,7 @@ const Brand = () => {
 
   const options = {
     name: 'brand',
-    selection: category === 'any' ? brands : {
+    selection: category === '' ? brands : {
       ...brands,
       items: brands.items.filter(brand => brand.relatedCategory.includes(category))
     },

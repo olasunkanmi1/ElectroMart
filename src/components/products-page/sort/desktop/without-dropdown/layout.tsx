@@ -46,10 +46,10 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
                     >
                         <input type='checkbox' id={title} 
                         onChange={() => handleSelect(value)}
-                            className='fcc appearance-none w-5 h-5 cursor-pointer rounded-full outline-none border border-black checked:bg-primary/80 checked:border-primary/80' 
+                            className={`fcc appearance-none cursor-pointer rounded-full outline-none border border-black checked:bg-primary/80 checked:border-primary/80 ${mobile ? 'w-7 h-7' : 'w-5 h-5'}`} 
                             checked={selectedValue === value}
                         />
-                        <label htmlFor={title} className='flex items-center cursor-pointer'>
+                        <label htmlFor={title} className={`flex items-center cursor-pointer ${mobile ? 'text-base' : ''}`}>
                             { name === 'rating' ? (
                                 <>
                                     {[...Array(parseInt(title))].map((_, i) => (
