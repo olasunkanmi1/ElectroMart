@@ -6,18 +6,20 @@ import {
 } from '@reduxjs/toolkit';
 import { FilterState } from '@types';
 
+const initialState: FilterState = {
+  category: '',
+  brand: '',
+  rating: '',
+  sort: '',
+  discount: '',
+}
+
 export const {
   reducer: filterReducer,
-  actions: { handleFilterChange },
+  actions: { handleFilterChange, resetState },
 } = createSlice({
-  name: 'layout',
-  initialState: {
-    category: '',
-    brand: '',
-    rating: '',
-    sort: '',
-    discount: '',
-  } as FilterState,
+  name: 'filter',
+  initialState,
   reducers: {
     handleFilterChange: (
       state,
@@ -26,6 +28,13 @@ export const {
       }: PayloadAction<{ name: string; value: string }>
     ) => {
       state[name as keyof FilterState] = value;
+    },
+    resetState: (state) => {
+      state.category = '';
+      state.brand = '';
+      state.rating = '';
+      state.sort = '';
+      state.discount = '';
     },
   },
   extraReducers: (builder) => {},

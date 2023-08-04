@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { findProducts } from '@utils';
 
 const Layout: React.FC<SortLayoutProps> = ({options}) => {
-    const {name, selection, selectedValue} = options;
+    const {name, selection, selectedValue, mobile} = options;
     const { items, placeholder, queryName } = selection;
 
     const router = useRouter();
@@ -23,9 +23,9 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
       };
 
   return (
-    <div className='flex flex-col p-2 border-b border-white gap-2 text-sm'>
+    <div className={`flex flex-col border-white gap-2 text-sm ${mobile ? '' : 'p-2 border-b'}`}>
         <div className='flex items-center justify-between'>
-            <h4 className='font-medium'> {placeholder} </h4>
+            <h4 className={`${mobile ? 'text-lg' : 'font-medium'}`}> {placeholder} </h4>
             <button className='font-medium text-primary'> RESET </button>
         </div>
 

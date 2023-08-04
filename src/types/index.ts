@@ -6,6 +6,7 @@ export interface LayoutState {
     isList: boolean;
     productLoading: boolean;
     pageLoading: boolean;
+    mobileFilter: boolean;
 };
 
 export interface FilterState {
@@ -93,7 +94,8 @@ export interface SortLayoutProps {
             queryName: string;
             items: FilterOption['items'];
         };
-        selectedValue: string;
+        selectedValue?: string;
+        mobile?: boolean;
     }
 };
 

@@ -32,6 +32,10 @@
   .tabSortActive {
     @apply bg-primary/20 border border-primary text-primary
   }
+
+  .mobileSort {
+    @apply px-3 py-1 border rounded-full flex justify-center text-gray-500 w-max
+  }
 }
 
 @layer utilities {

@@ -2,7 +2,7 @@ import Layout from './layout';
 import { useAppSelector } from '@redux';
 import { filterOptions } from '@utils'
 
-const Rating = () => {
+const Rating = ({mobile}: {mobile?: boolean}) => {
     const { rating } = useAppSelector((state) => state.filter);
     const { ratings } = filterOptions;
 
@@ -10,6 +10,7 @@ const Rating = () => {
         name: 'rating',
         selection: ratings,
         selectedValue: rating,
+        mobile
     };
 
   return (

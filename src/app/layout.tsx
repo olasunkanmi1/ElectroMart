@@ -1,8 +1,9 @@
 import './globals.css'
 import nProgress from "nprogress";
 import 'nprogress/nprogress.css';
-import { Navbar, Footer } from '@components'
+import { Navbar, Footer, Sidebar } from '@components'
 import { ReduxProvider } from '../redux/provider'
+import MobileSort from '../components/products-page/sort/mobile';
 
 export const metadata = {
   title: 'ElectroMart | Online Shopping for ELectronics!',
@@ -26,6 +27,9 @@ export default function RootLayout({
               </div>
               
               <Footer />
+
+              <Sidebar />
+              <MobileSort />
             </ReduxProvider>
           </body>
       </html>

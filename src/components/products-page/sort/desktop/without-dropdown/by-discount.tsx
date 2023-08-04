@@ -2,7 +2,7 @@ import Layout from './layout';
 import { useAppSelector } from '@redux';
 import { filterOptions } from '@utils'
 
-const Discount = () => {
+const Discount = ({mobile}: {mobile?: boolean}) => {
     const { discount } = useAppSelector((state) => state.filter);
     const { discounts } = filterOptions;
 
@@ -10,6 +10,7 @@ const Discount = () => {
         name: 'discount',
         selection: discounts,
         selectedValue: discount,
+        mobile
       };
 
   return (
