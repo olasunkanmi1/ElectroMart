@@ -9,11 +9,11 @@ export default function Categories() {
         { title: 'Computing', url: 'computing', icon: computer },
         { title: 'Drones', url: 'drones', icon: drone },
         { title: 'Gaming', url: 'gaming', icon: game },
-        { title: 'Phones & Tablets', url: 'phones_and_tablets', icon: phoneTab },
+        { title: 'Phones & Tablets', url: 'phonesAndTabs', icon: phoneTab },
         { title: 'Televisions', url: 'televisions', icon: tv },
-        { title: 'Audios', url: 'audios', icon: audio },
+        { title: 'Audios', url: 'audio', icon: audio },
         { title: 'Photography', url: 'photography', icon: cam },
-        { title: 'Home Appliances', url: 'home_appliances', icon: home },
+        { title: 'Home Appliances', url: 'homeAppliances', icon: home },
         // { title: 'Accessories', url: 'accessories', icon: computer },
     ];
       

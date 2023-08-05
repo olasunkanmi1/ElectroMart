@@ -10,7 +10,7 @@ const initialState: FilterState = {
   category: '',
   brand: '',
   rating: '',
-  sort: '',
+  sort: 'featured',
   discount: '',
 }
 
@@ -33,7 +33,7 @@ export const {
       state.category = '';
       state.brand = '';
       state.rating = '';
-      state.sort = '';
+      state.sort = 'featured';
       state.discount = '';
     },
   },

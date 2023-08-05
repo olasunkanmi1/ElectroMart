@@ -6,7 +6,8 @@ export {
   handleProductLoading,
   handlePageLoading,
   handleSidebar,
-  handleMobileFilter
+  handleMobileFilter,
+  handleCloseAll
 } from './layout';
 export { filterReducer, handleFilterChange, resetState } from './filter';
 export { productsReducer, handleProducts } from './products';

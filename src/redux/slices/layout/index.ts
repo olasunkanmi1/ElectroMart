@@ -11,7 +11,8 @@ export const { reducer: layoutReducer,
         handleProductLoading,
         handlePageLoading,
         handleSidebar,
-        handleMobileFilter
+        handleMobileFilter,
+        handleCloseAll
     } 
 } = createSlice({
     name: 'layout',
@@ -20,7 +21,7 @@ export const { reducer: layoutReducer,
         filterDropdown: '',
         sidebar: false,
         isList: false,
-        productLoading: false,
+        productLoading: true,
         pageLoading: true,
         mobileFilter: false,
     } as LayoutState,
@@ -45,6 +46,12 @@ export const { reducer: layoutReducer,
         },
         handleMobileFilter: (state, {payload}: PayloadAction<boolean>) => {
             state.mobileFilter = payload;
+        },
+        handleCloseAll: (state) => {
+            state.navbarDropdown = '';
+            state.filterDropdown = '';
+            state.sidebar = false;
+            state.mobileFilter = false;
         }
     },
     extraReducers: (builder) => {

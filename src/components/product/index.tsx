@@ -6,11 +6,12 @@ import { logo } from '@public'
 import { Product } from '@types'
 import { useAppSelector } from '@redux'
 import {GridType, ListType} from './type';
+import { usePathname } from 'next/navigation';
 
 const Product = ({product, homepage}: Product) => {
+    const pathname = usePathname();
     const { isList } = useAppSelector(({layout}) => layout)
-
-
+    
     const propsToSend = {
         product,
         homepage
@@ -19,7 +20,7 @@ const Product = ({product, homepage}: Product) => {
   return (
     <>
         <div className='hidden ls:block'>
-            { isList ? (
+            { isList && pathname !== '/'  ? (
                 <ListType options={propsToSend} />
             ) : (
                 <GridType options={propsToSend} />

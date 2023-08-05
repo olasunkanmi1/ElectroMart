@@ -6,7 +6,7 @@ import { AiOutlineRight } from 'react-icons/ai';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { DealsLayoutProps, Product as ProductType } from '@types';
-import { axiosInstance } from '@utils';
+import { axiosInstance, shuffleProducts } from '@utils';
 import Product from '../../product';
 import Skeleton from '../../product/skeleton';
 import 'swiper/css';
@@ -18,14 +18,6 @@ export default function DealsLayout({ heading, category }: DealsLayoutProps) {
     ProductType['product'][]
   >([]);
   const [loading, setLoading] = useState(true);
-
-  function shuffleArray(array: ProductType['product'][]) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
 
   useEffect(() => {
     axiosInstance
@@ -70,15 +62,15 @@ export default function DealsLayout({ heading, category }: DealsLayoutProps) {
           navigation={true}
           pagination={{ clickable: true }}
           modules={[Navigation, Pagination]}
-          className="h-[360px] w-full !p-3 deals"
+          className="h-[370px] w-full !p-3 deals"
         >
           {loading
             ? [...Array(5)].map((_, i) => (
-                <SwiperSlide className="max-w-full" key={i}>
+                <SwiperSlide className="" key={i}>
                   <Skeleton homepage />
                 </SwiperSlide>
               ))
-            : shuffleArray(featuredProducts).map((product, i) => (
+            : shuffleProducts(featuredProducts).map((product, i) => (
                 <SwiperSlide key={i} className="">
                   <Product product={product} homepage />
                 </SwiperSlide>

@@ -128,7 +128,7 @@ a {
 }
 
 .deals .swiper-button-next::after, .deals .swiper-button-prev::after {
-  transform: translateY(155px);
+  transform: translateY(160px);
 }
 
 .swiper-pagination {

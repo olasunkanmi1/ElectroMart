@@ -1,9 +1,7 @@
 import './globals.css'
-import nProgress from "nprogress";
-import 'nprogress/nprogress.css';
-import { Navbar, Footer, Sidebar } from '@components'
+import NextTopLoader from 'nextjs-toploader'
 import { ReduxProvider } from '../redux/provider'
-import MobileSort from '../components/products-page/sort/mobile';
+import Wrapper from '../components/layout'
 
 export const metadata = {
   title: 'ElectroMart | Online Shopping for ELectronics!',
@@ -15,23 +13,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  nProgress.configure({ showSpinner: false });
-  
   return (
     <html lang="en">
-          <body>
-            <ReduxProvider>
-              <div className='w-full min-h-[calc(100vh-250px)] ft:min-h-[calc(100vh-195px)] ft2:min-h-[calc(100vh-160px)] md:min-h-[calc(100vh-120px)] space-y-8 mb-8'>
-                <Navbar />
-                {children}
-              </div>
-              
-              <Footer />
-
-              <Sidebar />
-              <MobileSort />
-            </ReduxProvider>
-          </body>
+      <body>
+        <NextTopLoader showSpinner={false} />
+        <ReduxProvider>
+          <Wrapper> {children} </Wrapper>
+        </ReduxProvider>
+      </body>
       </html>
   )
 }

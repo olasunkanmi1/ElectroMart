@@ -2,15 +2,14 @@
 
 import {useState, useEffect} from 'react';
 import { Sort, Products } from '@components'
-import { axiosInstance } from '@utils';
-import { ServerSideProps } from '@types';
+import { axiosInstance, shuffleProducts } from '@utils';
+import { ServerSideProps, Product } from '@types';
 import { useAppDispatch, useAppSelector, handleProducts, handleFilterChange, handleProductLoading, handlePageLoading } from '@redux';
 
 export default function ProductsPage({params, searchParams}: ServerSideProps) {
   const dispatch = useAppDispatch();
   const filterState = useAppSelector((state) => state.filter);
   const { category, brand, rating, discount, sort } = searchParams
-  dispatch(handleProductLoading(true));
 
   useEffect(() => {
     Object.entries(searchParams).forEach(([key, value]) => {
@@ -25,7 +24,7 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
         brand: brand as string || '',
         rating: rating as string || '',
         discount: discount as string || '',
-        sort: sort as string || '',
+        sort: sort as string || 'featured',
       };
 
       const queryString = new URLSearchParams(queryParams).toString();
@@ -33,15 +32,24 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
       try {
         await fetch(url, {cache: 'no-store'})
         .then(res => res.json())
-        .then(({products}) => {
-          dispatch(handleProducts(products));
+        .then(({products}: {products: Product['product'][]}) => {
+          if(filterState.sort !== 'featured') {
+            dispatch(handleProducts(products));
+          } else {
+            const featuredProducts = products.filter(product => product.featured);
+            const nonFeaturedProducts = products.filter(product => !product.featured);
+
+            const sorted = [...shuffleProducts(featuredProducts), ...shuffleProducts(nonFeaturedProducts)]
+            dispatch(handleProducts(sorted));
+          }
           dispatch(handleProductLoading(false));
           dispatch(handlePageLoading(false));
         })
-        .catch(error => console.error('Error:', error));
-
       } catch (error) {
         console.log('Error:', error);
+        dispatch(handleProducts([]));
+        dispatch(handleProductLoading(false));
+        dispatch(handlePageLoading(false));
       }
     };
 

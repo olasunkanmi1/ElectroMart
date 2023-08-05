@@ -40,7 +40,7 @@ const GridType: React.FC<ProductTypeProps> = ({options}) => {
             </div>
 
             <div className='p-2 space-y-1'>
-                <h4 className='font-medium text-ellipsis leading-[19px]' style={styles}> { name } </h4> 
+                <h4 className='font-medium text-ellipsis leading-[19px] min-h-[38px]' style={styles}> { name } </h4> 
                 <div className='flex justify-between items-center'>
                     <h4 className='font-semibold text-primary text-sm ls:text-base'> ${ newPrice } </h4> 
                     <h4 className='text-xs ls:text-sm line-through text-gray-700'> ${ price } </h4> 

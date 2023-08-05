@@ -14,8 +14,7 @@ const Sort = () => {
     const { sortBy } = filterOptions;
 
     const { items, placeholder, queryName } = sortBy;
-    const sortValue = sort === 'any' ? 'Popular'
-    : sort === 'price-asc' ? 'Lowest Price'
+    const sortValue = sort === 'price-asc' ? 'Lowest Price'
     : sort === 'price-desc' ? 'Highest Price' : 'Featured'
 
     const handleSelect = (value: string) => {
