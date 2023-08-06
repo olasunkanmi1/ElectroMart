@@ -2,7 +2,7 @@
 
 import {useState, useEffect} from 'react';
 import { Sort, Products } from '@components'
-import { axiosInstance, shuffleProducts } from '@utils';
+import     { axiosInstance, shuffleProducts } from '@utils';
 import { ServerSideProps, Product } from '@types';
 import { useAppDispatch, useAppSelector, handleProducts, handleFilterChange, handleProductLoading, handlePageLoading } from '@redux';
 
@@ -11,6 +11,9 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
   const filterState = useAppSelector((state) => state.filter);
   const { category, brand, rating, discount, sort } = searchParams
 
+  console.log('fs before', filterState)
+
+
   useEffect(() => {
     Object.entries(searchParams).forEach(([key, value]) => {
       if (key in filterState) {
@@ -18,6 +21,10 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
       }
     });
 
+    setTimeout(() => {
+      console.log('fs timeout', filterState)
+    }, 2000);
+    
     const fetchData = async () => {
       const queryParams = {
         category: category as string || '',
@@ -52,7 +59,7 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
         dispatch(handlePageLoading(false));
       }
     };
-
+    
     fetchData();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

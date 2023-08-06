@@ -1,5 +1,5 @@
 import { AiOutlineUp } from 'react-icons/ai';
-import { useAppDispatch, useAppSelector, handleFilterDropdown, handleFilterChange } from '@redux';
+import { useAppDispatch, useAppSelector, handleFilterDropdown, handleFilterChange, handleProductLoading } from '@redux';
 import { filterOptions } from '@utils'
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { findProducts } from '@utils';
@@ -18,6 +18,7 @@ const Sort = () => {
     : sort === 'price-desc' ? 'Highest Price' : 'Featured'
 
     const handleSelect = (value: string) => {
+        dispatch(handleProductLoading(true));
         dispatch(handleFilterChange({ name: 'sort', value }));
         dispatch(handleFilterDropdown('sort'));
         findProducts({ [queryName]: value }, router, pathname, searchParams);

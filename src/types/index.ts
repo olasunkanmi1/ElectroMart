@@ -51,6 +51,7 @@ export interface Product {
         discount: number;
         QuantityInStock: string;
         price: number;
+        newPrice: number;
         featured: boolean;
         id: String;
     },
