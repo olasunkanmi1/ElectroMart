@@ -23,17 +23,22 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
       };
 
   return (
-    <div className={`flex flex-col border-white gap-2 text-sm ${mobile ? '' : 'p-2 border-b'}`}>
+    <div className={`flex flex-col gap-2 text-sm ${mobile ? '' : 'p-2 border-b'}`}>
         <div className='flex items-center justify-between'>
             <h4 className={`${mobile ? 'text-lg' : 'font-medium'}`}> {placeholder} </h4>
-            <button className='font-medium text-primary'> RESET </button>
+            <button 
+                className='font-medium text-primary'
+                onClick={() => selectedValue === '' ? null : handleSelect('')}
+            > 
+                RESET 
+            </button>
         </div>
 
         { pageLoading ? (
             [...Array(items.length)].map((_, i) => (
                 <div className='flex gap-2' key={i}>
-                    <div className='animate-pulse w-5 h-5 rounded-full bg-gray-400' />
-                    <div className='animate-pulse bg-gray-400 h-4 w-[calc(100%-50px)]' />
+                    <div className='animate-pulse w-5 h-5 rounded-full bg-slate-200' />
+                    <div className='animate-pulse bg-slate-200 h-4 w-[calc(100%-50px)]' />
                 </div>
             ))
         ) : (
@@ -45,7 +50,7 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
                         `} 
                     >
                         <input type='checkbox' id={title} 
-                        onChange={() => handleSelect(value)}
+                        onChange={() => selectedValue === value ? null : handleSelect(value)}
                             className={`fcc appearance-none cursor-pointer rounded-full outline-none border border-black checked:bg-primary/80 checked:border-primary/80 ${mobile ? 'w-7 h-7' : 'w-5 h-5'}`} 
                             checked={selectedValue === value}
                         />

@@ -16,12 +16,11 @@ const Navbar = () => {
   return (
     <div className='wrapper sticky top-0 !mt-0 bg-[#fefefe] z-[22] border-b h-[122px] xls:h-[130px] lg:h-[75px]'>
         <div className='flex justify-between items-center h-[75px]'>
-            <div className='flex items-center gap-4 h-[55px]'>
-                <Hamburger />
-                <Link href="/" className='h-[60px]'> 
-                    <Image src={logo} alt="logo" width={75} height={60} priority />
-                </Link>
-            </div>
+            <Hamburger />
+            
+            <Link href="/" className='h-[60px]'> 
+                <Image src={logo} alt="logo" width={75} height={60} priority />
+            </Link>
 
             <Searchbox className='hidden lg:flex' />
 

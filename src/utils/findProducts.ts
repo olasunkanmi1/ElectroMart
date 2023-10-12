@@ -7,7 +7,7 @@ import { ReadonlyURLSearchParams } from "next/navigation";
 
 export const findProducts = async (filterValues: IFilterValues, router: AppRouterInstance, pathname: string, searchParams: ReadonlyURLSearchParams) => {
   const values = getFilterValues(filterValues);
-
+  
   // Convert searchParams to a mutable URLSearchParams object
   const mutableSearchParams = new URLSearchParams(searchParams.toString());
 
@@ -21,6 +21,7 @@ export const findProducts = async (filterValues: IFilterValues, router: AppRoute
         mutableSearchParams.delete(name);
       }
     }
+    if(value === '') mutableSearchParams.delete(name);
   });
 
   // Convert mutableSearchParams back to a string

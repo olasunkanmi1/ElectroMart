@@ -7,8 +7,8 @@ export default function Account() {
     links: [
       { title: 'My account', url: '/account' },
       { title: 'Orders', url: '/orders' },
-      { title: 'Inbox', url: '/inbox' },
       { title: 'Saved Items', url: '/inbox' },
+      { title: 'Change Password', url: '/inbox' },
     ],
     icon: <AiOutlineUser size={25} />,
   };

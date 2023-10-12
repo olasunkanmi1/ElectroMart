@@ -21,7 +21,7 @@ export default function DealsLayout({ heading, category }: DealsLayoutProps) {
 
   useEffect(() => {
     axiosInstance
-      .get(`/product?category=${category}&featured=true`)
+      .get(`/product?category=${category}&homepage=true`)
       .then(({ status, data }) => {
         if (status === 200) {
           setFeaturedProducts(data.products);
@@ -45,37 +45,37 @@ export default function DealsLayout({ heading, category }: DealsLayoutProps) {
           </Link>
         </div>
 
-        <Swiper
-          // slidesPerView={3}
-          spaceBetween={10}
-          breakpoints={{
-            380: {
-              slidesPerView: 2,
-            },
-            650: {
-              slidesPerView: 3,
-            },
-            900: {
-              slidesPerView: 4,
-            },
-          }}
-          navigation={true}
-          pagination={{ clickable: true }}
-          modules={[Navigation, Pagination]}
-          className="h-[370px] w-full !p-3 deals"
-        >
-          {loading
-            ? [...Array(5)].map((_, i) => (
-                <SwiperSlide className="" key={i}>
-                  <Skeleton homepage />
-                </SwiperSlide>
-              ))
-            : shuffleProducts(featuredProducts).map((product, i) => (
-                <SwiperSlide key={i} className="">
-                  <Product product={product} homepage />
-                </SwiperSlide>
-              ))}
-        </Swiper>
+        {loading ? (
+            <div className="flex space-x-5 w-auto overflow-x-scroll p-5">
+               { [...Array(5)].map((_, i) => <Skeleton key={i} homepage /> )}
+            </div>
+        ) : (
+          <Swiper
+            // slidesPerView={3}
+            spaceBetween={10}
+            breakpoints={{
+              380: {
+                slidesPerView: 2,
+              },
+              650: {
+                slidesPerView: 3,
+              },
+              900: {
+                slidesPerView: 4,
+              },
+            }}
+            navigation={true}
+            pagination={{ clickable: true }}
+            modules={[Navigation, Pagination]}
+            className="h-[370px] w-full !p-3 deals"
+          >
+            {shuffleProducts(featuredProducts).map((product, i) => (
+              <SwiperSlide key={i} className="">
+                <Product product={product} homepage />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
       </div>
     </div>
   );

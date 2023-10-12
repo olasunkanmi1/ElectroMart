@@ -18,19 +18,18 @@ const Product = ({product, homepage}: Product) => {
 
   return (
     <div className={`shadow-custom rounded-md transition ease-in-out duration-500 hover:scale-[1.01] relative ${isList && pathname !== '/' ? 'ls:flex' : ''}`}>
-        <Link href={`/product/${id}`}>
-            <div className="ribbon">
-                <span> 
-                    {discount}% OFF 
-                </span>
-            </div>
-            <div className={`relative h-[200px] z-[2] ${isList && pathname !== '/' ? 'ls:w-1/2' : ''}`}>
-                <Image
-                    src={images[0]} alt="photo" fill loading='lazy' placeholder='blur'
-                    blurDataURL={logo.blurDataURL} 
-                    className='object-contain'
-                />
-            </div>
+        <div className="ribbon">
+            <span> 
+                {discount}% OFF 
+            </span>
+        </div>
+
+        <Link href={`/product/${id}`} className={`block relative h-[200px] z-[2] ${isList && pathname !== '/' ? 'ls:w-1/2' : ''}`}>
+            <Image
+                src={images[0]} alt="photo" fill loading='lazy' placeholder='blur'
+                blurDataURL={logo.blurDataURL} 
+                className='object-contain'
+            />
         </Link>
 
         <div className={`flex flex-col justify-between p-2 space-y-1 ${isList && pathname !== '/' ? 'ls:w-1/2' : ''}`}>
@@ -53,6 +52,8 @@ const Product = ({product, homepage}: Product) => {
                 ) }
             </div>
         </div>
+
+        
     </div>
   )
 }

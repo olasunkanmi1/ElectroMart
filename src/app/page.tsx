@@ -1,4 +1,4 @@
-import { Hero, Countdown, PhonesAndTablets, Gaming, Smartwatches, Televisions, Audios, Computing, Photography, Drones, HomeAppliances } from '@components'
+import { Hero, Countdown, PhonesAndTablets, Gaming, Smartwatches, Televisions, Audios, Computing, Photography, Drones, HomeAppliances, OneStop } from '@components'
 import { axiosInstance } from '@utils';
 
 export default async function Home() {
@@ -22,6 +22,7 @@ export default async function Home() {
       <Gaming />
       <Televisions />
       <Smartwatches />
+      <OneStop />
       <HomeAppliances />
       <Audios />
       <Computing />

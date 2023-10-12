@@ -9,22 +9,14 @@ import { useAppDispatch, useAppSelector, handleProducts, handleFilterChange, han
 export default function ProductsPage({params, searchParams}: ServerSideProps) {
   const dispatch = useAppDispatch();
   const filterState = useAppSelector((state) => state.filter);
-  const { category, brand, rating, discount, sort } = searchParams
-
-  console.log('fs before', filterState)
-
-
+  const { category, brand, rating, discount, sort } = searchParams;
+  
   useEffect(() => {
     Object.entries(searchParams).forEach(([key, value]) => {
       if (key in filterState) {
         dispatch(handleFilterChange({ name: key, value: value.toString() }));
       }
     });
-
-    setTimeout(() => {
-      console.log('fs timeout', filterState)
-    }, 2000);
-    
     const fetchData = async () => {
       const queryParams = {
         category: category as string || '',
@@ -34,21 +26,18 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
         sort: sort as string || 'featured',
       };
 
-      const queryString = new URLSearchParams(queryParams).toString();
+      // Filter out empty values
+      const filteredParams = Object.fromEntries(
+        Object.entries(queryParams).filter(([_, value]) => value !== '')
+      );
+
+      const queryString = new URLSearchParams(filteredParams).toString();
       const url = `/product${queryString ? `?${queryString}` : ''}`;
       try {
         await fetch(url, {cache: 'no-store'})
         .then(res => res.json())
         .then(({products}: {products: Product['product'][]}) => {
-          if(filterState.sort !== 'featured') {
-            dispatch(handleProducts(products));
-          } else {
-            const featuredProducts = products.filter(product => product.featured);
-            const nonFeaturedProducts = products.filter(product => !product.featured);
-
-            const sorted = [...shuffleProducts(featuredProducts), ...shuffleProducts(nonFeaturedProducts)]
-            dispatch(handleProducts(sorted));
-          }
+          dispatch(handleProducts(products));
           dispatch(handleProductLoading(false));
           dispatch(handlePageLoading(false));
         })
@@ -66,7 +55,7 @@ export default function ProductsPage({params, searchParams}: ServerSideProps) {
   }, [category, brand, rating, discount, sort, searchParams])
 
   return (
-    <div className='wrapper flex gap-4 relative min-h-[480px]'>
+    <div className='wrapper flex gap-4 relative min-h-[550px]'>
       <Sort />
       <Products />
     </div>

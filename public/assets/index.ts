@@ -11,10 +11,12 @@ import cam from './cam.svg'
 import audio from './audio.svg'
 import home from './home.svg'
 import notFound from './not-found.png'
+import appstore from './appstore.png'
+import googleplay from './googleplay.png'
 // export { default as OneStar } from './one-star.svg'
 // export { default as TwoStar } from './two-star.svg'
 // export { default as ThreeStar } from './three-star.svg'
 // export { default as FourStar } from './four-star.svg'
 // export { default as FiveStar } from './five-star.svg'
 
-export {logo, drone, hero, computer, watch, game, tv, phoneTab, cam, audio, home, notFound}
+export {appstore, googleplay, logo, drone, hero, computer, watch, game, tv, phoneTab, cam, audio, home, notFound}

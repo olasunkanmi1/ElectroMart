@@ -5,9 +5,8 @@ export default function Help() {
   const options = {
     name: 'Help',
     links: [
+      { title: 'FAQs', url: '/faqs' },
       { title: 'Help Center', url: '/help' },
-      { title: 'Order Cancellation', url: '/faqs' },
-      { title: 'Delivery Timelines', url: '/faqs' }
     ],
     icon: <FiHelpCircle size={25} />,
   };

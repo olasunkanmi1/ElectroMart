@@ -17,7 +17,7 @@ const Wrapper = ({children}: {children: React.ReactNode}) => {
   return (
     <>
         <div onClick={handleClick}
-            className='w-full min-h-[calc(100vh-250px)] ft:min-h-[calc(100vh-195px)] ft2:min-h-[calc(100vh-160px)] md:min-h-[calc(100vh-120px)] space-y-8 mb-8'
+            className='w-full min-h-[calc(100vh-250px)] md:min-h-[calc(100vh-120px)] space-y-8 mb-8'
         >
             <Navbar />
             {children}

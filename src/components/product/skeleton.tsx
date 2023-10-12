@@ -6,10 +6,10 @@ const Skeleton = ({homepage}: {homepage?: boolean}) => {
   const { isList } = useAppSelector(({layout}) => layout)
 
   return (
-    <div className={`h-[300px] rounded-md shadow-custom animate-pulse ${isList && pathname !== '/' ? 'ls:flex' : ''}`}>
+    <div className={`rounded-md shadow-custom animate-pulse ${isList && pathname !== '/' ? 'ls:flex' : homepage ? '!min-w-[280px]' : ''}`}>
         <div className={`bg-slate-200 h-[200px] ${isList && pathname !== '/' ? 'ls:w-1/2' : ''}`} />
 
-        <div className={`p-2 flex flex-col justify-between h-[100px] ${isList && pathname !== '/' ? 'ls:w-1/2' : ''}`}>
+        <div className={`p-2 flex flex-col justify-between ${isList && pathname !== '/' ? 'ls:w-1/2' : '!h-[114px]'}`}>
             { [...Array(isList ? 6 : 2)].map((_, i) => ( <div key={i} className='bg-slate-200 h-[17px] w-full' /> )) } 
             
             <div className='flex justify-between items-center'>

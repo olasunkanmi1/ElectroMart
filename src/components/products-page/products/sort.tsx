@@ -42,7 +42,7 @@ const Sort = () => {
                             {items.map(({ name, value }) => {
                             return (
                                 <div
-                                    onClick={() => handleSelect(value)}
+                                    onClick={() => sort === value ? dispatch(handleFilterDropdown('sort')) : handleSelect(value)}
                                     key={name}
                                     className={`flex items-center justify-center py-1 px-2 w-full rounded-full border text-sm cursor-pointer hover:tabSortActive 
                                                 ${

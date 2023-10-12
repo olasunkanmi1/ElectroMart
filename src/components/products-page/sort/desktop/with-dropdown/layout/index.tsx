@@ -13,15 +13,15 @@ const Layout: React.FC<SortLayoutProps> = ({options}) => {
     const dispatch = useAppDispatch();
 
   return (  
-    <div className='relative flex flex-col p-2 border-b border-white gap-1 text-sm'>
+    <div className='relative flex flex-col p-2 border-b gap-1 text-sm'>
         <h4 className='font-medium'> {placeholder} </h4>
 
         { pageLoading ? (
             <>
-              <div className='animate-pulse w-full bg-gray-400 h-9 rounded-md' />
+              <div className='animate-pulse w-full bg-slate-200 h-9 rounded-md' />
             </>
         ) : (
-            <div className={`flex items-center justify-between bg-white rounded-md text-gray-600 text-md font-semibold cursor-pointer py-2 px-4 `}
+            <div className={`flex items-center justify-between border rounded-md text-gray-600 text-md font-semibold cursor-pointer py-2 px-4 `}
                 onClick={() => dispatch(handleFilterDropdown(name))}
             >
                 <p className=''> 

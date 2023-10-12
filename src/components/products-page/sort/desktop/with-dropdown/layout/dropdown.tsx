@@ -22,9 +22,11 @@ const Dropdown: React.FC<FilterDropdownProps> = ({ name, items, queryName }) => 
   const handleSelect = (value: string) => {
     dispatch(handleProductLoading(true));
     dispatch(handleFilterDropdown(name));
-    dispatch(handleFilterChange({ name, value }));
     if(name === 'category') {
       dispatch(handleFilterChange({ name: 'brand', value: '' }));
+      dispatch(handleFilterChange({ name, value }));
+    } else {
+      dispatch(handleFilterChange({ name, value }));
     }
     
     findProducts({ [queryName]: value }, router, pathname, searchParams);
@@ -36,7 +38,7 @@ const Dropdown: React.FC<FilterDropdownProps> = ({ name, items, queryName }) => 
         {items.map(({ name: title, value }) => {
           return (
             <div
-              onClick={() => handleSelect(value)}
+              onClick={() => filterState[name as keyof FilterState] === value ? dispatch(handleFilterDropdown(name)) : handleSelect(value)}
               key={title}
               className={`flex items-center justify-center py-1 px-2 w-full rounded-full border text-sm cursor-pointer hover:tabSortActive 
                          ${
